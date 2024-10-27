@@ -3,7 +3,8 @@ import oscP5.*;
 import netP5.*;
 import java.util.ArrayList;
 
-Monome m;
+Monome grid;
+Monome arc;
 boolean dirty;
 
 int[][] step;
@@ -42,7 +43,8 @@ public void setup() {
   frameRate(60);
   stroke(255, 204);
 
-  m = new Monome(this);
+  grid = new Monome(this, "m50325101");
+  arc = new Monome(this, "m1100364");
 
   dirty = true;
   step = new int[6][16];
@@ -142,7 +144,7 @@ public void draw() {
     led[7][play_position] = 15;
 
     // Update grid
-    m.refresh(led);
+    grid.refresh(led);
     dirty = false;
   }
 }
