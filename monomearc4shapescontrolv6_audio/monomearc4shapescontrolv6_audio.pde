@@ -3,7 +3,8 @@ import oscP5.*;
 import ddf.minim.*;  // Import the Minim library for audio playback
 
 
-Monome m;
+Monome grid;
+Monome arc;
 Minim minim;
 AudioPlayer player;  // To handle the audio playback
 int[] positions;  // Track each encoder's position (0 to 64)
@@ -22,9 +23,10 @@ public void setup() {
   
   // Initialize Monome with correct serial number
   println("Initializing Monome with serial number: m0000007");
-  m = new Monome(this, "m0000007");
+  grid = new Monome(this, "m50325101");
+  arc = new Monome(this, "m1100364");
   
-  if (m == null) {
+  if (arc == null) {
     println("Monome object failed to initialize");
   } else {
     println("Monome object initialized successfully");
@@ -205,7 +207,7 @@ public void updateLEDs(int encoderIndex) {
   led[(int)playheadPositions[encoderIndex]] = 15;  // Full brightness for playhead
   
   // Refresh the LEDs for the encoder
-  m.refresh(encoderIndex, led);
+  arc.refresh(encoderIndex, led);
   println("Refreshing LEDs for encoder " + encoderIndex + " with playhead at " + (int)playheadPositions[encoderIndex]);
 }
 
